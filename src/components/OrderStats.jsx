@@ -4,8 +4,25 @@ import { useOrder } from "../context/OrderContext";
 const OrderStats = () => {
   const { orders } = useOrder();
 
-  // Calculate stats using reduce
-  const stats = orders.reduce(
+  // Q1 Validation: Filter for valid orders only
+  const validOrders = orders.filter((order) => {
+    if (!Array.isArray(order.items) || order.items.length === 0) {
+      return false;
+    }
+    const hasInvalidQuantity = order.items.some(
+      (item) => !item.quantity || item.quantity <= 0
+    );
+    if (hasInvalidQuantity) {
+      return false;
+    }
+    if (!order.totalAmount || order.totalAmount <= 0) {
+      return false;
+    }
+    return true;
+  });
+
+  // Q5: Calculate stats using reduce on valid orders only
+  const stats = validOrders.reduce(
     (acc, order) => {
       acc.totalOrders += 1;
 

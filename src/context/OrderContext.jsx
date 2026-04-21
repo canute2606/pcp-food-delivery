@@ -20,9 +20,9 @@ export const OrderProvider = ({ children }) => {
       try {
         // Step 1: Get Token
         const tokenRes = await getToken(
-          "20084016", // replace with your student ID
+          "E0223021", // Student ID
           "565120", // password
-          "food-delivery-orders" // dataset name
+          "A" // dataset name
         );
 
         // Step 2: Fetch dataset
@@ -40,9 +40,13 @@ export const OrderProvider = ({ children }) => {
 
   const deleteOrder = (id) => dispatch({ type: "DELETE_ORDER", payload: id });
 
+  const updateOrderStatus = (orderId, status) =>
+    dispatch({ type: "UPDATE_ORDER_STATUS", payload: { orderId, status } });
+
   const value = {
     ...state,
     deleteOrder,
+    updateOrderStatus,
   };
 
   return (

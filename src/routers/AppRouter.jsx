@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Orders from "../pages/Orders";
 import OrderDetail from "../pages/OrderDetail";
 import OrderStats from "../components/OrderStats";
+import Filter from "../pages/Filter";
 
 const AppRouter = () => {
   return (
@@ -19,6 +20,9 @@ const AppRouter = () => {
             <Link to="/stats">
               Statistics
             </Link>
+            <Link to="/filter">
+              Filter
+            </Link>
           </div>
         </nav>
 
@@ -28,6 +32,7 @@ const AppRouter = () => {
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders/:id" element={<OrderDetail />} />
             <Route path="/stats" element={<OrderStats />} />
+            <Route path="/filter" element={<Filter />} />
             <Route path="*" element={<h2>Page Not Found</h2>} />
           </Routes>
         </main>

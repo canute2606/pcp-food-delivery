@@ -1,14 +1,13 @@
 const OrderReducer = (state, action) => {
   switch (action.type) {
     case "SET_ORDERS":
-      // Filter out invalid/incomplete orders
+      // Accept all orders - Q1 will validate them
+      // Only check for basic structure (orderid and items array)
       const validOrders = Array.isArray(action.payload)
         ? action.payload.filter(
             (order) =>
-              order.orderid &&
-              order.customerName &&
-              order.status &&
-              Array.isArray(order.items)
+              order.orderid && // Must have order ID
+              Array.isArray(order.items) // Must have items array
           )
         : [];
 
@@ -17,6 +16,16 @@ const OrderReducer = (state, action) => {
         orders: validOrders,
         loading: false,
         error: null,
+      };
+
+    case "UPDATE_ORDER_STATUS":
+      return {
+        ...state,
+        orders: state.orders.map((order) =>
+          order.orderid === action.payload.orderid
+            ? { ...order, status: action.payload.status }
+            : order
+        ),
       };
 
     case "DELETE_ORDER":

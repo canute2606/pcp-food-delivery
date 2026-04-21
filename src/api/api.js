@@ -6,7 +6,7 @@ export const getToken = async (studentId, password, set) => {
   const { data } = await axios.post(`${BASE_URL}/public/token`, {
     studentId,
     password,
-    set,
+    SET: set,
   });
 
   return data;

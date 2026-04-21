@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useOrder } from "../context/OrderContext";
 
 const OrderCard = ({ order }) => {
-  const { deleteOrder } = useOrder();
+  const { deleteOrder, updateOrderStatus } = useOrder();
 
   const itemsCount = Array.isArray(order.items) ? order.items.length : 0;
 
@@ -37,6 +37,14 @@ const OrderCard = ({ order }) => {
         <Link to={`/orders/${order.orderid}`}>
           <button>View Details</button>
         </Link>
+        {order.status !== "delivered" && (
+          <button
+            onClick={() => updateOrderStatus(order.orderid, "delivered")}
+            data-testid="mark-delivered-btn"
+          >
+            Mark as Delivered
+          </button>
+        )}
         <button onClick={() => deleteOrder(order.orderid)}>Delete</button>
       </div>
     </div>
