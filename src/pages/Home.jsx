@@ -6,7 +6,7 @@ import MovieForm from "./MovieForm";
 const Home = () => (
   <div className="app-container" data-testid="home-page">
     <h1 className="main-title" data-testid="app-title">
-      🎬 Movie Wishlist
+      Movie Wishlist
     </h1>
     <MovieForm />
     <MovieList />

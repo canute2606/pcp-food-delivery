@@ -1,27 +1,41 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import MainLayout from "../layouts/MainLayout";
-import Home from "../pages/Home";
-import MovieStats from "../components/MovieStats";
-import Favorites from "../pages/Favorites";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Orders from "../pages/Orders";
+import OrderDetail from "../pages/OrderDetail";
+import OrderStats from "../components/OrderStats";
 
 const AppRouter = () => {
   return (
     <Router>
-      <MainLayout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/stats" element={<MovieStats />} />
+      <div>
+        <nav>
+          <div>
+            <Link to="/">
+              Food Delivery
+            </Link>
+            <Link to="/orders">
+              Orders
+            </Link>
+            <Link to="/stats">
+              Statistics
+            </Link>
+          </div>
+        </nav>
 
-          {/* Optional but important for CA2 pattern */}
-          <Route path="/movies/:id" element={<Home />} />
+        <main>
+          <Routes>
+            <Route path="/" element={<Orders />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/orders/:id" element={<OrderDetail />} />
+            <Route path="/stats" element={<OrderStats />} />
+            <Route path="*" element={<h2>Page Not Found</h2>} />
+          </Routes>
+        </main>
 
-          {/* Fallback */}
-          <Route path="*" element={<h2>Page Not Found</h2>} />
-        </Routes>
-      </MainLayout>
+        <footer>
+          <p>© 2024 Food Delivery Orders. All rights reserved.</p>
+        </footer>
+      </div>
     </Router>
   );
 };

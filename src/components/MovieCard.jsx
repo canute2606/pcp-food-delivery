@@ -28,22 +28,21 @@ const MovieCard = ({ movie }) => {
           data-testid="toggle-watched"
           onClick={() => toggleWatched(movie.id)}
         >
-          {movie.watched ? "Watched 🎬" : "To Watch 🍿"}
+          {movie.watched ? "Watched" : "To Watch"}
         </button>
 
         <button
           data-testid="toggle-favorite"
           onClick={() => toggleFavorite(movie.id)}
         >
-          {movie.favorite ? "💔" : "❤️"}
+          {movie.favorite ? "not favt" : "favt"}
         </button>
 
         <button
           data-testid="delete-movie"
           onClick={() => deleteMovie(movie.id)}
-          className="delete-btn"
         >
-          🗑️
+          Delete
         </button>
       </div>
     </div>

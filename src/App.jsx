@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import MovieList from "./components/MovieList.jsx";
-import MovieStats from "./components/MovieStats";
-import "./App.css";
+import React from "react";
 import AppRouter from "./routers/AppRouter.jsx";
-import { MovieProvider } from "./context/MovieContext.jsx";
+import { OrderProvider } from "./context/OrderContext.jsx";
 
 const App = () => {
   return (
-    <MovieProvider>
+    <OrderProvider>
       <AppRouter />
-    </MovieProvider>
+    </OrderProvider>
   );
 };
 
