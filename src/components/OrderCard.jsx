@@ -12,7 +12,7 @@ const OrderCard = ({ order }) => {
       <div>
         <h3>Order #{order.orderid}</h3>
         <p>
-          <strong>Customer:</strong> {order.customerName || "N/A"}
+          <strong>Customer:</strong> {order.customerName || "Unknown"}
         </p>
         <p>
           <strong>Restaurant:</strong> {order.restaurant || "N/A"}
